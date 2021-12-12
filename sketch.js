@@ -8,12 +8,12 @@ let branches3 = [];
 
 function setup() {
     // 800 x 400 (double width to make room for each "sub-canvas")
-    createCanvas(1920, 1080);
-    //background(0);
+    createCanvas(1350, 600);
+    background(0);
     // Create both of your off-screen graphics buffers
-    leftBuffer = createGraphics(500, 700);
-    centerBuffer = createGraphics(500, 700);
-    rightBuffer = createGraphics(500, 700);
+    leftBuffer = createGraphics(450, 600);
+    centerBuffer = createGraphics(450, 600);
+    rightBuffer = createGraphics(450, 600);
   
     branches1.push(new Branch1(
       createVector(centerBuffer.width/2, centerBuffer.height), 50));
@@ -29,9 +29,9 @@ function draw() {
     drawCenterBuffer();
     drawRightBuffer();
     // Paint the off-screen buffers onto the main canvas
-    image(leftBuffer, 50, 100);
-    image(centerBuffer, 600, 100);
-    image(rightBuffer, 1150, 100);
+    image(leftBuffer, 0, 0);
+    image(centerBuffer, 450, 0);
+    image(rightBuffer, 900, 0);
 }
 
 function drawLeftBuffer() {
@@ -63,8 +63,8 @@ class Branch1{
     this.startPos = startPos;
     this.positions = [];
     
-    this.xMove = 4;
-    this.yMove = 3;
+    this.xMove = 6;
+    this.yMove = 4;
     this.yDir = 0.8;
     
     this.sizes = [];
@@ -112,7 +112,7 @@ class Branch1{
       this.sizes.push(this.size);
       this.ySizes.push(random(1, 5));
       
-      if(random(1) < 0.01 && branches1.length < 50) {
+      if(random(1) < 0.011 && branches1.length < 50) {
         this.ramification(newPos, this.size, false);
       } 
       
@@ -142,8 +142,8 @@ class Branch2{
     this.startPos = startPos;
     this.positions = [];
     
-    this.xMove = 5;
-    this.yMove = 3;
+    this.xMove = 6;
+    this.yMove = 4;
     this.yDir = 0.8;
     
     this.color = 150;
@@ -197,7 +197,7 @@ class Branch2{
       this.sizes.push(this.size);
       this.ySizes.push(random(1, 5));
       
-      if(random(1) < 0.01 && branches2.length < 50) {
+      if(random(1) < 0.011 && branches2.length < 50) {
         if (this.isInfected == false) this.ramification(newPos, this.size, false);
         else this.ramification(newPos, this.size, true);
       } 
